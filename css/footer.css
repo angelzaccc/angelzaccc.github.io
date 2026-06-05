@@ -1,0 +1,177 @@
+
+img {
+    /* Prevents the ghost image from being dragged off the screen */
+    user-drag: none;
+    -webkit-user-drag: none;
+    
+    /* Prevents the user from highlighting/selecting the image */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+.social-container {
+  display: flex;
+  gap: 7px; /* Space between buttons */
+}
+
+/* The Core Button Style */
+.social-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* Sizing */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  
+  /* Colors */
+  background-color: #474747; /* Muted Forest Green */
+  color: #ffffff;            /* Icon color */
+  font-size: 20px;           /* Icon size */
+  text-decoration: none;
+  
+  /* Smooth transitions for hover effects */
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  
+  /* Subtle soft shadow under the whole unit */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* The Offset Ring Layer Behind the Button */
+.social-btn::before {
+  content: '';
+  position: absolute;
+  z-index: -1; 
+  
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  
+
+  border: 1px solid #474747;
+  background-color: transparent;
+  
+
+  transform: translate(4px, 4px);
+  
+  transition: transform 0.2s ease;
+}
+
+
+/* 1. Normal Hover State for the Button */
+.social-btn:hover {
+  transform: translate(-2px, -2px); 
+  background-color: #474747;      
+} /* <-- Added this missing bracket to close the block! */
+
+/* 2. Hover State for the Offset Ring Behind It */
+.social-btn:hover::before {
+  transform: translate(6px, 6px);
+}
+
+/* ========================================
+   PROGRAMMING LANGUAGES (CIRCULAR DESIGN)
+   ======================================== */
+
+/* Container for the language row */
+.languages-container {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px; 
+    padding: 0 20px;   
+    margin: 0 auto;
+}
+
+.header-section {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0 15px;
+}
+
+/* Individual card setup */
+.language-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+}
+
+
+.language-circle {
+    width: 80px;
+    height: 80px;
+    background: #ffffff;
+    border: 1px solid #505050; 
+    border-radius: 50%;        
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* This creates the clean, sharp offset shadow line seen on your social icons.
+       Parameters: 3px right, 3px down, 0px blur, dark shadow color 
+    */
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.15); 
+    
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect: Smooth lift */
+.language-circle:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Constrain your uploaded icons cleanly inside the circle */
+.language-circle img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+/* Labels below circles */
+.language-name {
+    margin-top: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #474747;
+    text-transform: uppercase; /* Makes text clean and uniform if desired */
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   Responsive Adjustment for Mobile Devices 
+   ========================================== */
+@media (max-width: 480px) {
+    .header-section h2 {
+        font-size: 22px; 
+    }
+    
+    .languages-container {
+        gap: 15px; 
+    }
+    
+    .language-circle {
+        width: 65px;  
+        height: 65px;
+        box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.15);
+    }
+    
+    .language-circle img {
+        width: 32px;  
+        height: 32px;
+    }
+    
+    .language-name {
+        font-size: 12px;
+        margin-top: 10px;
+    }
+} 
